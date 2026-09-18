@@ -1,0 +1,33 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Vestel Klima",
+        "description": "Vestel / HomeVSmart hesabını ve klima cihaz bilgilerini gir.",
+        "data": {
+          "email": "E-posta",
+          "password": "Şifre",
+          "thing_name": "Thing adı",
+          "home_id": "Ev ID",
+          "product_line": "Ürün satırı",
+          "device_kind": "Cihaz türü",
+          "command_topic": "Komut konusu",
+          "rest_base_url": "REST ana adresi",
+          "region": "AWS bölgesi",
+          "user_pool_id": "Cognito user pool ID",
+          "app_client_id": "Cognito app client ID",
+          "app_client_secret": "Cognito app client secret",
+          "scan_interval": "Yenileme aralığı, saniye"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Vestel servisine bağlanılamadı.",
+      "invalid_auth": "Vestel girişi başarısız.",
+      "unknown": "Beklenmeyen hata."
+    },
+    "abort": {
+      "already_configured": "Bu klima zaten eklenmiş."
+    }
+  }
+}

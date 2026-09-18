@@ -1,0 +1,62 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Vestel AC Custom",
+        "description": "Enter your Vestel / HomeVSmart account and appliance details.",
+        "data": {
+          "email": "Email",
+          "password": "Password",
+          "thing_name": "Thing name",
+          "home_id": "Home ID",
+          "product_line": "Product line",
+          "device_kind": "Device kind",
+          "command_topic": "Command topic",
+          "rest_base_url": "REST base URL",
+          "region": "AWS region",
+          "user_pool_id": "Cognito user pool ID",
+          "app_client_id": "Cognito app client ID",
+          "app_client_secret": "Cognito app client secret",
+          "scan_interval": "Refresh interval in seconds"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to Vestel.",
+      "invalid_auth": "Vestel login failed.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This air conditioner is already configured."
+    }
+  },
+  "services": {
+    "set_turbo": {
+      "name": "Set turbo",
+      "description": "Turn Vestel AC turbo mode on or off.",
+      "fields": {
+        "enabled": {
+          "name": "Enabled"
+        }
+      }
+    },
+    "set_eco": {
+      "name": "Set eco",
+      "description": "Turn Vestel AC eco mode on or off.",
+      "fields": {
+        "enabled": {
+          "name": "Enabled"
+        }
+      }
+    },
+    "set_sleep": {
+      "name": "Set sleep",
+      "description": "Turn Vestel AC sleep mode on or off.",
+      "fields": {
+        "enabled": {
+          "name": "Enabled"
+        }
+      }
+    }
+  }
+}

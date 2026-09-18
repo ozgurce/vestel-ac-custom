@@ -1,0 +1,38 @@
+set_turbo:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: vestel_ac_custom
+          domain: climate
+    enabled:
+      required: true
+      selector:
+        boolean:
+
+set_eco:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: vestel_ac_custom
+          domain: climate
+    enabled:
+      required: true
+      selector:
+        boolean:
+
+set_sleep:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: vestel_ac_custom
+          domain: climate
+    enabled:
+      required: true
+      selector:
+        boolean:

@@ -1,0 +1,10 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Vestel AC Custom",
+        "description": "Enter your Vestel / HomeVSmart account and appliance details."
+      }
+    }
+  }
+}
