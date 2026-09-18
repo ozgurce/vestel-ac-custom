@@ -2,6 +2,5 @@
   "name": "Vestel AC Custom",
   "country": "TR",
   "render_readme": true,
-  "domains": ["climate"],
   "homeassistant": "2024.6.0"
 }
