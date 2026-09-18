@@ -41,7 +41,8 @@ VESTEL_TO_HVAC = {
 }
 
 FAN_MODES = ["Auto", "Speed1", "Speed2", "Speed3", "Speed4", "Speed5"]
-SWING_MODES = ["Off", "Pos1", "Pos2", "Pos3", "Pos4", "Pos5", "Pos6"]
+VERTICAL_SWING_MODES = ["Off", "Pos1", "Pos2", "Pos3", "Pos4", "Pos5", "Pos6"]
+HORIZONTAL_SWING_MODES = ["Auto", "Pos1", "Pos2", "Pos3", "Pos4", "Pos5"]
 _SERVICES_REGISTERED = False
 
 
@@ -79,8 +80,8 @@ class VestelAcClimate(CoordinatorEntity[VestelAcCoordinator], ClimateEntity):
         HVACMode.FAN_ONLY,
     ]
     _attr_fan_modes = FAN_MODES
-    _attr_swing_modes = SWING_MODES
-    _attr_swing_horizontal_modes = SWING_MODES
+    _attr_swing_modes = VERTICAL_SWING_MODES
+    _attr_swing_horizontal_modes = HORIZONTAL_SWING_MODES
     _attr_supported_features = (
         ClimateEntityFeature.TARGET_TEMPERATURE
         | ClimateEntityFeature.FAN_MODE
@@ -145,7 +146,8 @@ class VestelAcClimate(CoordinatorEntity[VestelAcCoordinator], ClimateEntity):
 
     async def _send(self, **kwargs: Any) -> None:
         await self.coordinator.api.async_command(**kwargs)
-        await self.coordinator.async_request_refresh()
+        self.coordinator.async_apply_optimistic_update(kwargs)
+        self.coordinator.async_schedule_follow_up_refreshes((1, 3, 7))
 
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         await self._send(mode=HVAC_TO_VESTEL[hvac_mode])

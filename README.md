@@ -12,7 +12,8 @@ This integration was built from a working local Vestel AC control implementation
 - Room temperature
 - Fan speed: Auto, Speed1-Speed5
 - Vertical swing positions: Off, Pos1-Pos6
-- Horizontal swing positions: Off, Pos1-Pos6
+- Horizontal swing positions: Auto, Pos1-Pos5
+- Immediate optimistic state updates after successful commands, followed by short cloud refreshes
 - Extra services for Turbo, Eco, and Sleep mode
 
 ## HACS installation

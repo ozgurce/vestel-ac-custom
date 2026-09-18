@@ -49,6 +49,8 @@ FAN_SPEED_VALUES = {
 
 SWING_VALUES = {
     "off": "Off",
+    "auto": "Off",
+    "automatic": "Off",
     "pos1": "Pos1",
     "pos2": "Pos2",
     "pos3": "Pos3",
@@ -61,6 +63,16 @@ SWING_VALUES = {
     "4": "Pos4",
     "5": "Pos5",
     "6": "Pos6",
+}
+
+HORIZONTAL_SWING_DISPLAY_VALUES = {
+    "Off": "Auto",
+    "Pos1": "Pos1",
+    "Pos2": "Pos2",
+    "Pos3": "Pos3",
+    "Pos4": "Pos4",
+    "Pos5": "Pos5",
+    "Pos6": "Pos5",
 }
 
 
@@ -165,6 +177,14 @@ def normalize_swing(value: Any, label: str) -> str | None:
     if key not in SWING_VALUES:
         raise ValueError(f"Invalid AC {label}: {value}")
     return SWING_VALUES[key]
+
+
+def normalize_horizontal_swing_display(value: Any) -> str | None:
+    """Return the Home Assistant label for horizontal swing."""
+    normalized = normalize_swing(value, "horizontal swing")
+    if normalized is None:
+        return None
+    return HORIZONTAL_SWING_DISPLAY_VALUES.get(normalized, normalized)
 
 
 def build_rest_properties(
@@ -387,7 +407,9 @@ class VestelAcClient:
             ),
             "fan_speed": normalize_fan_speed(fan_speed) if fan_speed is not None else None,
             "vertical_swing": normalize_swing(vertical_swing, "vertical swing") if vertical_swing is not None else None,
-            "horizontal_swing": normalize_swing(horizontal_swing, "horizontal swing") if horizontal_swing is not None else None,
+            "horizontal_swing": normalize_horizontal_swing_display(horizontal_swing)
+            if horizontal_swing is not None
+            else None,
             "turbo": _normalize_bool_flag(_extract_named_value(settings, "Fan.Turbo")),
             "eco": _normalize_bool_flag(_extract_named_value(settings, "Fan.Eco")),
             "sleep": _normalize_bool_flag(_extract_named_value(settings, "Fan.SleepMode")),
