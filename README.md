@@ -14,6 +14,7 @@ This integration was built from a working local Vestel AC control implementation
 - Vertical swing positions: Off, Pos1-Pos6
 - Horizontal swing positions: Auto, Pos1-Pos5
 - Immediate optimistic state updates after successful commands, followed by short cloud refreshes
+- Faster status polling, capped at 15 seconds so external changes appear sooner
 - Extra services for Turbo, Eco, and Sleep mode
 
 ## HACS installation

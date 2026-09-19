@@ -61,7 +61,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: VestelConfigEntry) -> bo
     session = async_get_clientsession(hass)
     api = VestelAcClient(session, _entry_config(entry))
     scan_interval = int(entry.data.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
-    coordinator = VestelAcCoordinator(hass, api, timedelta(seconds=max(15, scan_interval)))
+    coordinator = VestelAcCoordinator(
+        hass,
+        api,
+        timedelta(seconds=max(15, min(scan_interval, DEFAULT_SCAN_INTERVAL))),
+    )
     await coordinator.async_config_entry_first_refresh()
 
     entry.runtime_data = coordinator
